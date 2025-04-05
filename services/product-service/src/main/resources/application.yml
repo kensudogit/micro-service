@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: user-service
+    name: product-service
   datasource:
     url: jdbc:postgresql://database:5432/microservices
     username: admin
@@ -13,11 +13,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: 5672
-    username: admin
-    password: admin
   cloud:
     consul:
       host: service-discovery

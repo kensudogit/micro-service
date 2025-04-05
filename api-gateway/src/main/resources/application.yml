@@ -5,16 +5,26 @@ spring:
   application:
     name: api-gateway
   cloud:
+    consul:
+      host: service-discovery
+      port: 8500
+      discovery:
+        health-check-path: /actuator/health
+        health-check-interval: 15s
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
         - id: user-service
-          uri: http://localhost:8081
+          uri: lb://user-service
           predicates:
             - Path=/api/users/**
           filters:
             - StripPrefix=2
         - id: product-service
-          uri: http://localhost:8082
+          uri: lb://product-service
           predicates:
             - Path=/api/products/**
           filters:

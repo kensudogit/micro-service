@@ -1,4 +1,4 @@
-package com.example.userservice.model;
+package com.example.productservice.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,12 +8,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String email;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer stock;
 } 
