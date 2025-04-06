@@ -8,18 +8,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// This annotation marks the class as a RESTful web service controller
 @RestController
+// This annotation maps HTTP requests to /api/products
 @RequestMapping("/api/products")
 public class ProductController {
     
+    // Injects an instance of ProductRepository
     @Autowired
     private ProductRepository productRepository;
     
+    // Handles GET requests to retrieve all products
     @GetMapping
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
     
+    // Handles GET requests to retrieve a product by its ID
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         return productRepository.findById(id)
@@ -27,11 +32,13 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
     
+    // Handles POST requests to create a new product
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
     
+    // Handles PUT requests to update an existing product
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
         return productRepository.findById(id)
@@ -45,6 +52,7 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
     
+    // Handles DELETE requests to delete a product by its ID
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
         return productRepository.findById(id)

@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://database:5432/microservices
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: 5672
+    username: admin
+    password: admin
+  cloud:
+    consul:
+      host: service-discovery
+      port: 8500
+      discovery:
+        health-check-path: /actuator/health
+        health-check-interval: 15s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always 
