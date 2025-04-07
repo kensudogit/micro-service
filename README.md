@@ -515,4 +515,72 @@ docker run --rm -v micro-service_postgres-data:/volume -v /tmp:/backup alpine ta
 
 # ボリュームのリストア
 docker run --rm -v micro-service_postgres-data:/volume -v /tmp:/backup alpine sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xzf /backup/postgres-backup.tar.gz"
-``` 
+```
+
+## New Services Setup
+
+### Sales Management Service
+1. Navigate to the `sales-management` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t sales-management-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8081:8080 sales-management-service
+   ```
+
+### Customer Management Service
+1. Navigate to the `customer-management` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t customer-management-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8082:8080 customer-management-service
+   ```
+
+### Daily Report Management Service
+1. Navigate to the `daily-report-management` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t daily-report-management-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8083:8080 daily-report-management-service
+   ```
+
+### Approval Request Service
+1. Navigate to the `approval-request` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t approval-request-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8084:8080 approval-request-service
+   ```
+
+### Contract Management Service
+1. Navigate to the `contract-management` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t contract-management-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8085:8080 contract-management-service
+   ```
+
+### Asset Management Service
+1. Navigate to the `asset-management` directory.
+2. Build the Docker image:
+   ```bash
+   docker build -t asset-management-service .
+   ```
+3. Run the Docker container:
+   ```bash
+   docker run -p 8086:8080 asset-management-service
+   ``` 
